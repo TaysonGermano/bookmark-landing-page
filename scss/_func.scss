@@ -1,0 +1,54 @@
+@function weight($name) {
+  @return map-get($fontWeight, $name);
+}
+
+@mixin container {
+  padding: 4em 1em;
+}
+
+@mixin widthEightPercent {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@mixin desktop {
+  @media screen and (min-width: 800px) {
+    @content;
+  }
+}
+
+@mixin dpFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin btn-primary {
+  background-color: $primary;
+  padding: 18px;
+  color: $borderColor;
+  font-weight: weight(bold);
+  border-radius: 5px;
+
+  @include desktop() {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@mixin btn-secondary {
+  @include btn-primary();
+  background-color: $borderColor;
+  color: $textColor;
+  box-shadow: rgba(#000, 0.3) 0px 3px 5px;
+}
+
+@mixin shape {
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 50%;
+  background-color: $primary;
+  z-index: -20;
+}

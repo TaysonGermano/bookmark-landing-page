@@ -1,0 +1,79 @@
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* GLOBAL DECLARATION */
+body {
+  font-size: $fontSize;
+  font-family: $font;
+  color: $textColor;
+
+  .container {
+    @include container();
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: $textColor;
+  }
+
+  input,
+  button {
+    border: none;
+  }
+
+  h1,
+  h2 {
+    @include widthEightPercent();
+    @include desktop() {
+      width: 100%;
+    }
+    color: $titleColor;
+    margin-bottom: $elementMargin;
+  }
+
+  p {
+    @include widthEightPercent();
+    margin-bottom: $elementMargin;
+    line-height: $lineHeight;
+    @include desktop() {
+      width: 100%;
+    }
+  }
+
+  section {
+    @include container();
+    @include desktop() {
+      padding: 4em 4em;
+    }
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .btn-primary {
+    @include btn-primary();
+  }
+
+  .btn-secondary {
+    @include btn-secondary();
+  }
+
+  .hide {
+    display: none;
+  }
+
+  @include desktop {
+    section > h2 + p {
+      width: $subtitleWidth;
+    }
+  }
+}

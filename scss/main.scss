@@ -1,0 +1,502 @@
+@import "config";
+@import "func";
+@import "global";
+
+/* mobile nav bar */
+nav.open {
+  width: 100%;
+  padding: 1em;
+  position: absolute;
+  height: 100vh;
+  background-color: rgba($titleColor, 0.9);
+  transition: 0.5s all ease-in-out;
+
+  .menu-items {
+    display: block;
+    margin: 0 auto;
+    margin-top: $elementMargin;
+    width: 80%;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: $borderColor;
+  }
+
+  .login {
+    @extend .menu-items;
+    margin-top: $elementMargin;
+    padding: 15px 0px;
+    border: 2px solid $borderColor;
+    border-radius: 4px;
+  }
+
+  .menu-items_item {
+    padding: 15px;
+    border-top: 1px solid $borderColor;
+    &:nth-child(3) {
+      border-bottom: 1px solid $borderColor;
+    }
+  }
+}
+
+nav {
+  width: 100%;
+  padding: 1em;
+  font-size: 16px;
+
+  @include desktop {
+    @include dpFlex;
+    padding: 2em 4em;
+    .wrap-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    li {
+      margin-right: 30px;
+      a {
+        color: $titleColor;
+        text-transform: uppercase;
+        font-weight: weight(bold);
+      }
+    }
+
+    .login {
+      background-color: $secondary;
+      padding: 10px 30px;
+      border-radius: 3px;
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  .menu-btn {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 100;
+    cursor: pointer;
+    @include desktop {
+      display: none;
+    }
+  }
+
+  @include desktop {
+    ul {
+      display: flex;
+    }
+
+    .wrap-menu {
+      display: flex;
+    }
+  }
+}
+
+/* hero section */
+.hero {
+  display: flex;
+  flex-direction: column-reverse;
+
+  .description {
+    @include widthEightPercent;
+  }
+
+  h1 {
+    @extend .description;
+    margin-bottom: $elementMargin;
+  }
+
+  .call-to-action {
+    margin-top: $elementMargin + 30px;
+    font-size: 16px;
+    a {
+      margin-right: $elementMargin;
+    }
+  }
+
+  @include desktop {
+    @include dpFlex();
+    .hero_image,
+    .hero_content {
+      width: 100%;
+      text-align: left;
+      margin-right: $gap;
+    }
+
+    .shape {
+      @include shape;
+      top: 15em;
+      right: 0;
+      border-radius: 100px 0 0 100px;
+    }
+
+    .description {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+/* images on mobile */
+section img {
+  width: 80%;
+}
+
+/* features */
+.features {
+  .tab {
+    margin: 10px;
+    border-top: 1px solid $textColor;
+    padding: 10px;
+    &:nth-child(3) {
+      border-bottom: 1px solid $textColor;
+    }
+    cursor: pointer;
+  }
+
+  .illustration {
+    margin-bottom: $elementMargin;
+    margin-top: $elementMargin;
+  }
+
+  .description > p {
+    margin-bottom: $elementMargin;
+  }
+
+  @include desktop {
+    .tabs {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin-bottom: 50px;
+    }
+
+    .tab {
+      border: none;
+      margin: 0;
+      padding: 10px 20px;
+      border-bottom: solid 1px $textColor;
+      &:nth-child(3) {
+        border-bottom: solid 1px $textColor;
+      }
+    }
+
+    .active,
+    .tab:hover {
+      border-bottom: 2px solid $secondary !important;
+      transition: all 0.5 ease-in-out;
+    }
+
+    .tab_content {
+      @include dpFlex;
+      justify-content: space-around;
+    }
+
+    .illustration,
+    .description {
+      width: 43%;
+      text-align: left;
+      margin-right: $gap;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .shape {
+      @include shape;
+      top: 48em;
+      left: 0;
+      border-radius: 0 100px 100px 0;
+      @media screen and (min-width: 1000px) {
+        top: 61em;
+      }
+    }
+  }
+}
+
+/* blurps */
+.blurps {
+  .image {
+    margin: $elementMargin;
+    img {
+      width: 90px;
+    }
+  }
+
+  .blurp {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 4em;
+    padding-top: 1.5em;
+    padding-bottom: 3em;
+    box-shadow: rgba(#000, 0.3) 0px 1px 2px;
+    border-radius: 10px;
+    background: {
+      image: url(../images/bg-dots.svg);
+      size: 100%;
+      repeat: no-repeat;
+      position-y: 14.7em;
+    }
+  }
+
+  .version {
+    margin-bottom: $elementMargin + 40px;
+  }
+
+  @include desktop {
+    @include dpFlex;
+    justify-content: center;
+
+    .blurp {
+      width: 270px;
+      margin: $gap - 20px;
+      &:nth-child(2) {
+        margin-top: 60px;
+      }
+      &:nth-child(3) {
+        margin-top: calc(60px * 2);
+      }
+
+      img {
+        width: 50%;
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+}
+
+/* faq */
+.faq {
+  .question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      color: $titleColor;
+      font-weight: weight(bold);
+    }
+    padding: 20px;
+    cursor: pointer;
+    &.open {
+      img {
+        transform: rotate(180deg);
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+
+  .tab {
+    border-bottom: 1px solid $textColor;
+  }
+
+  .answer {
+    text-align: left;
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 3em;
+  }
+
+  @include desktop {
+    .tab {
+      width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+/* newsletter */
+.newsletter {
+  background-color: $primary;
+
+  h2 {
+    text-transform: uppercase;
+    color: $borderColor;
+    font-size: 15px;
+    letter-spacing: 4px;
+    font-weight: weight(regular);
+  }
+
+  p {
+    color: $borderColor;
+    font-weight: weight(bold);
+    font-size: 2em;
+  }
+
+  input {
+    padding: 16px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+
+  button {
+    @extend input;
+    @include btn-primary();
+    background-color: $secondary;
+    display: block;
+    margin-top: $elementMargin + 35px;
+    cursor: pointer;
+  }
+
+  form {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .error-icon {
+    position: absolute;
+    right: 0;
+    top: 13px;
+    margin-right: 5px;
+  }
+
+  .error-msg {
+    border-radius: 5px;
+    background-color: $secondary;
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+    color: $borderColor;
+    font-weight: weight(regular);
+    position: absolute;
+    width: 100%;
+    top: 3.4em;
+  }
+
+  img {
+    width: 20px;
+  }
+
+  @include desktop {
+    form {
+      width: 600px;
+      margin: 0 auto;
+    }
+    .form-elements {
+      @include dpFlex;
+    }
+
+    .flex {
+      width: 300px;
+      position: relative;
+      top: 0;
+      margin-top: 0px;
+    }
+
+    .submit {
+      width: 200px;
+      padding: 16px;
+    }
+
+    .error-icon {
+      width: 40px;
+      position: absolute;
+      top: 13px;
+      left: 16em;
+    }
+
+    .error-msg {
+      position: absolute;
+      top: 3.4em;
+      left: 26px;
+    }
+  }
+}
+
+/* footer */
+footer {
+  background-color: $titleColor;
+  .logo {
+    margin-bottom: $elementMargin;
+  }
+
+  .link {
+    margin: 20px;
+    a {
+      color: $borderColor;
+    }
+  }
+
+  .social-links {
+    @include dpFlex;
+    justify-content: center;
+    li {
+      margin: 10px;
+    }
+  }
+
+  @include desktop {
+    nav {
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .social-links {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .logo {
+      margin: 0;
+      fill: #fff;
+    }
+  }
+}
+
+/* hover */
+@include desktop {
+  %hover {
+    color: $secondary;
+  }
+
+  nav a:hover {
+    @extend %hover;
+  }
+
+  .btn-primary:hover {
+    transition: all 0.2s ease-in-out;
+    background: transparent;
+    color: $primary;
+    border: 2px solid $primary;
+  }
+
+  .btn-secondary:hover {
+    @extend .btn-primary:hover;
+    color: $titleColor;
+    border-color: $titleColor;
+  }
+
+  .login:hover {
+    @extend .btn-primary:hover;
+    color: $secondary !important;
+    border-color: $secondary;
+  }
+
+  .question span:hover {
+    @extend %hover;
+  }
+
+  .submit:hover {
+    @extend .login:hover;
+    background-color: #fff;
+  }
+}
